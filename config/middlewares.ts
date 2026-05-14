@@ -10,8 +10,22 @@ export default ({ env }: { env: any }) => [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'https://ktcms-1.onrender.com', 'http://localhost:1337'],
-          'media-src': ["'self'", 'data:', 'blob:', 'https://ktcms-1.onrender.com', 'http://localhost:1337'],
+          'img-src': [
+            "'self'", 
+            'data:', 
+            'blob:', 
+            'https://ktcms-1.onrender.com', 
+            'https://krafttrassures-virid.vercel.app',
+            'https://krafttreasure.com',
+            'https:', // Allow any HTTPS image source for now to fix the broken images
+          ],
+          'media-src': [
+            "'self'", 
+            'data:', 
+            'blob:', 
+            'https://ktcms-1.onrender.com', 
+            'https:',
+          ],
           upgradeInsecureRequests: null,
         },
       },
