@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "otp_stores",
+  "info": {
+    "singularName": "otp-store",
+    "pluralName": "otp-stores",
+    "displayName": "OtpStore",
+    "description": "Store OTPs and reset tokens for password recovery"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "otp": {
+      "type": "string",
+      "required": true
+    },
+    "reset_token": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "datetime"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false
+    },
+    "attempts": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

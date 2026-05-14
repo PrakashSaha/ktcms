@@ -70,6 +70,7 @@ $RECYCLE.BIN/
 *.sql
 *.sqlite
 *.sqlite3
+*.db
 
 
 ############################
@@ -129,3 +130,15 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+# Development & Debug Scripts
+check-*.js
+debug-*.js
+verify-*.js
+bootstrap-log.txt
+
+# Documentation & Setup
+FORGOT_PASSWORD_SETUP.md
+implementation_plan.md
+walkthrough.md
+production_cleanup.md

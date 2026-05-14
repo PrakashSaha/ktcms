@@ -1,0 +1,130 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Products"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "material": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttarakhand",
+        "Uttar Pradesh",
+        "West Bengal",
+        "Andaman and Nicobar Islands",
+        "Chandigarh",
+        "Dadra and Nagar Haveli and Daman & Diu",
+        "Delhi",
+        "Jammu & Kashmir",
+        "Ladakh",
+        "Lakshadweep",
+        "Puducherry"
+      ]
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "in_stock",
+        "out_of_stock",
+        "pre_order"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "otherOrigin": {
+      "type": "string"
+    },
+    "hero_sliders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hero-slider.hero-slider",
+      "mappedBy": "products"
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "product"
+    },
+    "cart_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart.cart",
+      "mappedBy": "product"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "product"
+    },
+    "Size": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

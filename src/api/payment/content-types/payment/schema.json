@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "gateway": {
+      "type": "text",
+      "required": true
+    },
+    "transaction_id": {
+      "type": "text",
+      "unique": true
+    },
+    "gateway_order_id": {
+      "type": "text"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "text",
+      "default": "INR",
+      "required": true
+    },
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "upi",
+        "card",
+        "netbanking",
+        "wallet",
+        "cod",
+        "emi"
+      ]
+    },
+    "paid_at": {
+      "type": "datetime"
+    },
+    "gateway_response": {
+      "type": "json"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "payment"
+    }
+  }
+}
