@@ -21,7 +21,8 @@ export default ({ env }: { env: any }) => [
     name: 'strapi::cors',
     config: {
       origin: [
-        env('FRONTEND_URL', 'https://krafttreasure.com'), 
+        env('FRONTEND_URL', 'https://krafttrassures-virid.vercel.app'), 
+        'https://krafttrassures-virid.vercel.app',
         'https://krafttreasure.com', 
         'https://www.krafttreasure.com',
         'http://localhost:3000', 
