@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/content-releases/dist/server/migrations/index.js b/node_modules/@strapi/content-releases/dist/server/migrations/index.js
+index 86828be..bc4814f 100644
+--- a/node_modules/@strapi/content-releases/dist/server/migrations/index.js
++++ b/node_modules/@strapi/content-releases/dist/server/migrations/index.js
+@@ -95,7 +95,7 @@ async function migrateIsValidAndStatusReleases() {
+     });
+ }
+ async function revalidateChangedContentTypes({ oldContentTypes, contentTypes }) {
+-    if (oldContentTypes !== undefined && contentTypes !== undefined) {
++    if (oldContentTypes && contentTypes) {
+         const contentTypesWithDraftAndPublish = Object.keys(oldContentTypes).filter((uid)=>oldContentTypes[uid]?.options?.draftAndPublish);
+         const releasesAffected = new Set();
+         utils.async.map(contentTypesWithDraftAndPublish, async (contentTypeUID)=>{
