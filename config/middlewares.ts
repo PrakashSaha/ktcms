@@ -10,8 +10,8 @@ export default ({ env }: { env: any }) => [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'https://api.krafttreasure.com', 'http://localhost:1337'],
-          'media-src': ["'self'", 'data:', 'blob:', 'https://api.krafttreasure.com', 'http://localhost:1337'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://ktcms-1.onrender.com', 'http://localhost:1337'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://ktcms-1.onrender.com', 'http://localhost:1337'],
           upgradeInsecureRequests: null,
         },
       },
