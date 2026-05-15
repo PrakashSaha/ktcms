@@ -9,22 +9,25 @@ export default ({ env }: { env: any }) => [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', 'http:', 'https://dlvanktuohroejmhytng.storage.supabase.co'],
           'img-src': [
             "'self'", 
             'data:', 
             'blob:', 
+            'https:',
+            'http:',
             'https://ktcms-1.onrender.com', 
             'https://krafttrassures-virid.vercel.app',
             'https://krafttreasure.com',
-            'https:', // Allow any HTTPS image source for now to fix the broken images
+            'https://dlvanktuohroejmhytng.storage.supabase.co',
           ],
           'media-src': [
             "'self'", 
             'data:', 
             'blob:', 
-            'https://ktcms-1.onrender.com', 
             'https:',
+            'http:',
+            'https://ktcms-1.onrender.com', 
           ],
           upgradeInsecureRequests: null,
         },

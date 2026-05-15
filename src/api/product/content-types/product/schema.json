@@ -11,6 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "name": {
       "type": "string",
       "required": true
@@ -20,22 +28,30 @@
       "targetField": "name",
       "required": true
     },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "LongDescription": {
+      "type": "text",
+      "required": true
+    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "price": {
-      "type": "decimal",
-      "required": true
-    },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images"
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "in_stock",
+        "out_of_stock",
+        "pre_order"
       ]
     },
     "material": {
@@ -43,7 +59,7 @@
     },
     "origin": {
       "type": "enumeration",
-      "required": true,
+      "required": false,
       "enum": [
         "Andhra Pradesh",
         "Arunachal Pradesh",
@@ -82,18 +98,6 @@
         "Lakshadweep",
         "Puducherry"
       ]
-    },
-    "availability": {
-      "type": "enumeration",
-      "enum": [
-        "in_stock",
-        "out_of_stock",
-        "pre_order"
-      ]
-    },
-    "description": {
-      "type": "text",
-      "required": true
     },
     "otherOrigin": {
       "type": "string"
