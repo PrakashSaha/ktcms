@@ -43,9 +43,7 @@ export default {
             await strapi.documents('api::product.product').update({
               documentId: item.product.documentId,
               data: {
-                quantity: newQuantity,
-                // Automatically set availability to out_of_stock if quantity hits 0
-                availability: newQuantity === 0 ? 'out_of_stock' : item.product.availability
+                quantity: newQuantity
               }
             });
             

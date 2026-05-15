@@ -758,6 +758,17 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
       'api::order-item.order-item'
     >;
     orderId: Schema.Attribute.UID<'transactionId'>;
+    orderStatus: Schema.Attribute.Enumeration<
+      [
+        'Processing',
+        'Confirmed',
+        'Shipped',
+        'Delivered',
+        'Cancelled',
+        'Returned',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'Processing'>;
     payment: Schema.Attribute.Relation<'oneToOne', 'api::payment.payment'>;
     paymentStatus: Schema.Attribute.Enumeration<
       ['Pending', 'Paid', 'Failed', 'Refunded']
@@ -867,9 +878,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    availability: Schema.Attribute.Enumeration<
-      ['in_stock', 'out_of_stock', 'pre_order']
-    >;
     cart_items: Schema.Attribute.Relation<'oneToMany', 'api::cart.cart'>;
     categories: Schema.Attribute.Relation<
       'manyToMany',
@@ -949,7 +957,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.DefaultTo<0>;
     Size: Schema.Attribute.String & Schema.Attribute.Required;
-    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

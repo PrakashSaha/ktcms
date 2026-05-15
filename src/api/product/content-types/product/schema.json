@@ -23,11 +23,7 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name",
-      "required": true
-    },
+
     "price": {
       "type": "decimal",
       "required": true
@@ -46,14 +42,7 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "availability": {
-      "type": "enumeration",
-      "enum": [
-        "in_stock",
-        "out_of_stock",
-        "pre_order"
-      ]
-    },
+
     "material": {
       "type": "string"
     },
