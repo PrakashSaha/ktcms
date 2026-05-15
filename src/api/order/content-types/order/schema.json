@@ -53,6 +53,18 @@
       "relation": "oneToOne",
       "target": "api::payment.payment",
       "mappedBy": "order"
+    },
+    "orderStatus": {
+      "type": "enumeration",
+      "default": "Processing",
+      "enum": [
+        "Processing",
+        "Confirmed",
+        "Shipped",
+        "Delivered",
+        "Cancelled",
+        "Returned"
+      ]
     }
   }
 }
