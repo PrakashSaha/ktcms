@@ -952,6 +952,37 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiStoryStepStoryStep extends Struct.CollectionTypeSchema {
+  collectionName: 'story_steps';
+  info: {
+    description: 'Historical and process steps for the Our Story page';
+    displayName: 'Story Step';
+    pluralName: 'story-steps';
+    singularName: 'story-step';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::story-step.story-step'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    stepNumber: Schema.Attribute.Integer;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
@@ -1557,6 +1588,7 @@ declare module '@strapi/strapi' {
       'api::otp-store.otp-store': ApiOtpStoreOtpStore;
       'api::payment.payment': ApiPaymentPayment;
       'api::product.product': ApiProductProduct;
+      'api::story-step.story-step': ApiStoryStepStoryStep;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::wishlist.wishlist': ApiWishlistWishlist;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -10,7 +10,7 @@ export default {
       });
 
       const publicRole = await strapi.db.query('plugin::users-permissions.role').findOne({
-        where: { type: 'public' },
+        where: { $or: [{ type: 'public' }, { name: 'Public' }] },
       });
 
       if (authRole) {
@@ -32,21 +32,21 @@ export default {
           'api::cart.cart.find',
           'api::cart.cart.findOne',
           'api::cart.cart.update',
-          'api::cart.cart.delete'
+          'api::cart.cart.delete',
+          'api::otp-store.otp-store.forgotPassword',
+          'api::otp-store.otp-store.resetPassword'
         ];
 
         for (const action of authActions) {
-          // Clean up any existing permissions for this action to avoid duplicates or orphans
-          await strapi.db.query('plugin::users-permissions.permission').deleteMany({
-            where: { action }
+          const exists = await strapi.db.query('plugin::users-permissions.permission').findOne({
+            where: { role: authRole.id, action }
           });
           
-          await strapi.db.query('plugin::users-permissions.permission').create({
-            data: { 
-              action, 
-              role: authRole.id
-            }
-          });
+          if (!exists) {
+            await strapi.db.query('plugin::users-permissions.permission').create({
+              data: { action, role: authRole.id }
+            });
+          }
         }
       }
 
@@ -62,6 +62,8 @@ export default {
           'api::testimonial.testimonial.findOne',
           'api::instagram-feed.instagram-feed.find',
           'api::instagram-feed.instagram-feed.findOne',
+          'api::story-step.story-step.find',
+          'api::story-step.story-step.findOne',
           'api::global-configuration.global-configuration.find'
         ];
 

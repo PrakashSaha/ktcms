@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "story_steps",
+  "info": {
+    "singularName": "story-step",
+    "pluralName": "story-steps",
+    "displayName": "Story Step",
+    "description": "Historical and process steps for the Our Story page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "stepNumber": {
+      "type": "integer"
+    }
+  }
+}
