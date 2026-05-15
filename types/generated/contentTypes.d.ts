@@ -883,13 +883,14 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::hero-slider.hero-slider'
     >;
-    image: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::product.product'
     > &
       Schema.Attribute.Private;
+    LongDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     material: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     order_items: Schema.Attribute.Relation<
@@ -935,8 +936,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         'Lakshadweep',
         'Puducherry',
       ]
-    > &
-      Schema.Attribute.Required;
+    >;
     otherOrigin: Schema.Attribute.String;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
