@@ -82,15 +82,16 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
               </div>
             </div>
 
-            <div class="digital-sign">
-              Digitally Signed by Kraft Treasure<br>
-              Date: ${orderDate}<br>
-              Reason: Invoice
-            </div>
-
-            <div class="columns">
-              <div class="col">
-                <h3>Sold By:</h3>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+              <div class="digital-sign">
+                Digitally Signed by Kraft Treasure<br>
+                Date: ${orderDate}<br>
+                Reason: Invoice<br><br>
+                <span class="bold">Order Number:</span> ${order.orderId || order.documentId}<br>
+                <span class="bold">Order Date:</span> ${orderDate}
+              </div>
+              <div class="text-right" style="line-height: 1.5;">
+                <h3 style="font-size: 14px; margin: 0 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 3px;">Sold By:</h3>
                 <div class="info-text">
                   Kraft Treasure Inc.<br>
                   Sector-A, Itanagar<br>
@@ -98,26 +99,25 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
                   <span class="bold">PAN No:</span> ABCDE1234F<br>
                   <span class="bold">GST Registration No:</span> 12ABCDE1234F1Z5
                 </div>
-                <div class="info-text">
-                  <span class="bold">Order Number:</span> ${order.orderId || order.documentId}<br>
-                  <span class="bold">Order Date:</span> ${orderDate}
-                </div>
               </div>
-              
-              <div class="col text-right">
+            </div>
+
+            <div class="columns">
+              <div class="col">
                 <h3>Billing Address:</h3>
                 <div class="info-text">
                   ${shippingName}<br>
                   ${shippingLine} ${shippingLine2}<br>
                   ${shippingCity}, ${shippingState} ${shippingPin}, IN
                 </div>
+              </div>
+              
+              <div class="col text-right">
                 <h3>Shipping Address:</h3>
                 <div class="info-text">
                   ${shippingName}<br>
                   ${shippingLine} ${shippingLine2}<br>
-                  ${shippingCity}, ${shippingState} ${shippingPin}, IN<br><br>
-                  <span class="bold">Invoice Number:</span> INV-${order.documentId.substring(0, 8).toUpperCase()}<br>
-                  <span class="bold">Invoice Date:</span> ${orderDate}
+                  ${shippingCity}, ${shippingState} ${shippingPin}, IN
                 </div>
               </div>
             </div>
