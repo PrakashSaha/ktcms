@@ -24,6 +24,11 @@ export default {
           'api::order.order.create',
           'api::order.order.find',
           'api::order.order.findOne',
+          'api::order-item.order-item.create',
+          'api::order-item.order-item.find',
+          'api::order-item.order-item.findOne',
+          'api::order-item.order-item.update',
+          'api::order-item.order-item.delete',
           'api::wishlist.wishlist.create',
           'api::wishlist.wishlist.find',
           'api::wishlist.wishlist.findOne',
@@ -64,7 +69,9 @@ export default {
           'api::instagram-feed.instagram-feed.findOne',
           'api::story-step.story-step.find',
           'api::story-step.story-step.findOne',
-          'api::global-configuration.global-configuration.find'
+          'api::global-configuration.global-configuration.find',
+          'api::adornment.adornment.find',
+          'api::adornment.adornment.findOne'
         ];
 
         for (const action of publicActions) {

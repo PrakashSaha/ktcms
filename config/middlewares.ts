@@ -9,7 +9,7 @@ export default ({ env }: { env: any }) => [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:', 'http:', 'https://dlvanktuohroejmhytng.storage.supabase.co'],
+          'connect-src': ["'self'", 'https:', 'http:', 'https://dlvanktuohroejmhytng.storage.supabase.co', 'https://dlvanktuohroejmhytng.supabase.co'],
           'img-src': [
             "'self'", 
             'data:', 
@@ -20,6 +20,7 @@ export default ({ env }: { env: any }) => [
             'https://krafttrassures-virid.vercel.app',
             'https://krafttreasure.com',
             'https://dlvanktuohroejmhytng.storage.supabase.co',
+            'https://dlvanktuohroejmhytng.supabase.co',
           ],
           'media-src': [
             "'self'", 

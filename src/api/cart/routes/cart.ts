@@ -7,16 +7,19 @@ import { factories } from '@strapi/strapi';
 export default factories.createCoreRouter('api::cart.cart', {
     config: {
         find: {
-            middlewares: ['global::is-owner'],
+            middlewares: [{ name: 'global::is-owner', config: { userField: 'owner' } }],
         },
         findOne: {
-            middlewares: ['global::is-owner'],
+            middlewares: [{ name: 'global::is-owner', config: { userField: 'owner' } }],
+        },
+        create: {
+            middlewares: [{ name: 'global::is-owner', config: { userField: 'owner' } }],
         },
         update: {
-            middlewares: ['global::is-owner'],
+            middlewares: [{ name: 'global::is-owner', config: { userField: 'owner' } }],
         },
         delete: {
-            middlewares: ['global::is-owner'],
+            middlewares: [{ name: 'global::is-owner', config: { userField: 'owner' } }],
         },
     }
 });

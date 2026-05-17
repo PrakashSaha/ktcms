@@ -16,15 +16,15 @@
       "required": true,
       "min": 1
     },
-    "unit_price": {
+    "unitPrice": {
       "type": "decimal",
       "required": true
     },
-    "total_price": {
+    "totalPrice": {
       "type": "decimal",
       "required": true
     },
-    "product_name": {
+    "productName": {
       "type": "text",
       "required": true
     },
@@ -40,12 +40,13 @@
       "target": "api::product.product",
       "inversedBy": "order_items"
     },
-    "user": {
+    "owner": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "order_items"
     },
-    "added_at": {
+    "addedAt": {
       "type": "datetime",
       "required": true
     }

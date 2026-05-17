@@ -70,13 +70,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::address.address",
-      "mappedBy": "user"
+      "mappedBy": "owner"
     },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
-      "mappedBy": "user"
+      "mappedBy": "owner"
     },
     "firstName": {
       "type": "string"
@@ -87,17 +87,23 @@
     "phone": {
       "type": "string"
     },
-    "carts": {
+    "cart_items": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::cart.cart",
-      "mappedBy": "user"
+      "mappedBy": "owner"
     },
     "wishlist_items": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wishlist.wishlist",
-      "mappedBy": "user"
+      "mappedBy": "owner"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "owner"
     }
   }
 }

@@ -18,7 +18,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
           },
         },
       },
-      baseUrl: `https://dlvanktuohroejmhytng.supabase.co/storage/v1/object/public/${env('S3_BUCKET')}/`,
+      baseUrl: `https://dlvanktuohroejmhytng.storage.supabase.co/storage/v1/object/public/${env('S3_BUCKET')}`,
     },
   },
   email: {

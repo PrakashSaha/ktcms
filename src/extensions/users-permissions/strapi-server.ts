@@ -17,7 +17,7 @@ export default (plugin: any) => {
     // Use Document Service for Strapi 5
     const user = await (strapi as any).documents('plugin::users-permissions.user').findOne({
       documentId: ctx.state.user.documentId || ctx.state.user.id,
-      populate: ['wishlist'] as any
+      populate: ['wishlist_items'] as any
     });
 
     if (!user) {
@@ -33,7 +33,7 @@ export default (plugin: any) => {
   // Override /api/users/:id to allow updating wishlist
   plugin.controllers.user.update = async (ctx: any) => {
     const { id } = ctx.params; // This is the ID or documentId depending on how it's called
-    const { wishlist } = ctx.request.body;
+    const { wishlist_items } = ctx.request.body;
 
     // Security check: ensure users can only update their own profile
     const currentUser = ctx.state.user;
@@ -44,14 +44,14 @@ export default (plugin: any) => {
     // Call the original update controller first
     await originalUpdate(ctx);
 
-    // If wishlist was sent in the body, manually update the relation using Document Service
-    if (wishlist !== undefined) {
+    // If wishlist_items was sent in the body, manually update the relation using Document Service
+    if (wishlist_items !== undefined) {
       const updatedUser = await (strapi as any).documents('plugin::users-permissions.user').update({
         documentId: currentUser.documentId || id,
         data: {
-          wishlist: wishlist
+          wishlist_items: wishlist_items
         } as any,
-        populate: ['wishlist'] as any
+        populate: ['wishlist_items'] as any
       });
       ctx.body = sanitizeOutput(updatedUser);
     }

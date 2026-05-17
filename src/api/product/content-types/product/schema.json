@@ -19,6 +19,14 @@
         "images"
       ]
     },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "name": {
       "type": "string",
       "required": true
@@ -32,7 +40,7 @@
       "type": "text",
       "required": true
     },
-    "LongDescription": {
+    "longDescription": {
       "type": "text",
       "required": true
     },
@@ -42,7 +50,6 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-
     "material": {
       "type": "string"
     },
@@ -115,7 +122,7 @@
       "target": "api::order-item.order-item",
       "mappedBy": "product"
     },
-    "Size": {
+    "size": {
       "type": "string",
       "required": true
     },

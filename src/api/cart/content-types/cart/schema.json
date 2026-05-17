@@ -21,11 +21,11 @@
       "type": "datetime",
       "required": true
     },
-    "user": {
+    "owner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "carts"
+      "inversedBy": "cart_items"
     },
     "product": {
       "type": "relation",
