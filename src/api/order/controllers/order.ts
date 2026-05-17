@@ -57,12 +57,12 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
             .text-right { text-align: right; }
             table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
             th, td { border: 1px solid #eee; padding: 8px; }
-            th { background-color: #666; color: #fff; font-weight: normal; text-align: right; }
+            th { background-color: transparent; color: #333; font-weight: bold; text-align: right; border-bottom: 2px solid #333; }
             th.text-left { text-align: left; }
             td { text-align: right; }
             td.text-left { text-align: left; }
-            .table-footer { background-color: #666; color: #fff; font-weight: bold; }
-            .table-footer td { border-color: #666; }
+            .table-footer { background-color: transparent; color: #333; font-weight: bold; }
+            .table-footer td { border-top: 2px solid #333; border-bottom: 2px solid #333; }
             .amount-words { margin-top: 20px; font-size: 12px; }
             .sign-box { margin-top: 50px; text-align: right; }
             .print-btn { display: block; margin: 20px auto; padding: 10px 20px; background: #232f3e; color: #fff; text-decoration: none; text-align: center; width: 150px; cursor: pointer; border: none; font-size: 14px; border-radius: 4px; }
