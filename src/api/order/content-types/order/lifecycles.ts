@@ -1,26 +1,28 @@
-
 export default {
-  async afterCreate(event) {
-    // We handle initial stock reduction if the order is created as 'Confirmed' or 'Processing'
-    const { result } = event;
-    
-    // In many cases, order_items are not populated yet in afterCreate
-    // but if they are, we can process them. Otherwise, we rely on afterUpdate.
-  },
-
   async afterUpdate(event) {
     const { result, params } = event;
     const { data, previousData } = params;
 
-    // Check if status changed to 'Confirmed' or 'Processing' (Stock Reduction)
-    const isNowConfirmed = (data.orderStatus === 'Confirmed' || data.orderStatus === 'Processing') && 
-                           (previousData.orderStatus !== 'Confirmed' && previousData.orderStatus !== 'Processing');
+    if (!data || !previousData || !data.orderStatus || !previousData.orderStatus) return;
 
-    // Check if status changed to 'Cancelled' or 'Returned' (Stock Restoration)
-    const isNowCancelled = (data.orderStatus === 'Cancelled' || data.orderStatus === 'Returned') && 
-                           (previousData.orderStatus !== 'Cancelled' && previousData.orderStatus !== 'Returned');
+    const activeStatuses = ['Processing', 'Confirmed', 'Shipped', 'Delivered'];
+    const inactiveStatuses = ['Cancelled', 'Returned'];
 
-    if (isNowConfirmed || isNowCancelled) {
+    const wasActive = activeStatuses.includes(previousData.orderStatus);
+    const isActiveNow = activeStatuses.includes(data.orderStatus);
+
+    const wasInactive = inactiveStatuses.includes(previousData.orderStatus);
+    const isInactiveNow = inactiveStatuses.includes(data.orderStatus);
+
+    let stockAction: 'reduce' | 'restore' | null = null;
+
+    if (wasActive && isInactiveNow) {
+      stockAction = 'restore';
+    } else if (wasInactive && isActiveNow) {
+      stockAction = 'reduce';
+    }
+
+    if (stockAction) {
       // Fetch order with items and products
       const order = await strapi.documents('api::order.order').findOne({
         documentId: result.documentId,
@@ -35,7 +37,7 @@ export default {
         for (const item of order.order_items) {
           if (item.product && item.quantity) {
             const currentQuantity = item.product.quantity || 0;
-            const newQuantity = isNowConfirmed 
+            const newQuantity = stockAction === 'reduce' 
               ? Math.max(0, currentQuantity - item.quantity) 
               : currentQuantity + item.quantity;
 
@@ -47,7 +49,7 @@ export default {
               }
             });
             
-            console.log(`[INVENTORY] Product ${item.product.name} quantity updated: ${currentQuantity} -> ${newQuantity}`);
+            console.log(`[INVENTORY] Order transition (${previousData.orderStatus} -> ${data.orderStatus}): Stock ${stockAction === 'reduce' ? 'REDUCED' : 'RESTORED'} for product "${item.product.name}": ${currentQuantity} -> ${newQuantity}`);
           }
         }
       }
