@@ -23,9 +23,9 @@ export default {
     }
 
     if (stockAction) {
-      // Fetch order with items and products
-      const order = await strapi.documents('api::order.order').findOne({
-        documentId: result.documentId,
+      // Fetch order with items and products using db query
+      const order = await strapi.db.query('api::order.order').findOne({
+        where: { id: result.id },
         populate: {
           order_items: {
             populate: ['product']
@@ -41,9 +41,9 @@ export default {
               ? Math.max(0, currentQuantity - item.quantity) 
               : currentQuantity + item.quantity;
 
-            // Update product quantity
-            await strapi.documents('api::product.product').update({
-              documentId: item.product.documentId,
+            // Update both draft and published product rows simultaneously using db query
+            await strapi.db.query('api::product.product').updateMany({
+              where: { documentId: item.product.documentId },
               data: {
                 quantity: newQuantity
               }
