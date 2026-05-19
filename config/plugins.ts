@@ -1,4 +1,9 @@
+import dns from 'dns';
 import type { Core } from '@strapi/strapi';
+
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
   upload: {

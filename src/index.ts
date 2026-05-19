@@ -1,3 +1,9 @@
+import dns from 'dns';
+
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+}
+
 export default {
   register() {},
 
