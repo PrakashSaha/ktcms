@@ -29,16 +29,19 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
   },
   email: {
     config: {
-      provider: path.resolve(__dirname, '../src/providers/email-gmail-api'),
+      provider: env('EMAIL_PROVIDER', 'nodemailer'),
       providerOptions: {
-        clientId: env('GMAIL_CLIENT_ID'),
-        clientSecret: env('GMAIL_CLIENT_SECRET'),
-        refreshToken: env('GMAIL_REFRESH_TOKEN'),
-        senderEmail: env('SMTP_USERNAME', 'prakashsaha1999@gmail.com'),
+        host: env('SMTP_HOST', 'smtp.resend.com'),
+        port: env.int('SMTP_PORT', 465),
+        secure: env.bool('SMTP_SECURE', true),
+        auth: {
+          user: env('SMTP_USERNAME', 'resend'),
+          pass: env('SMTP_PASSWORD'),
+        },
       },
       settings: {
-        defaultFrom: env('SMTP_DEFAULT_FROM', 'prakashsaha1999@gmail.com'),
-        defaultReplyTo: env('SMTP_DEFAULT_REPLY_TO', 'prakashsaha1999@gmail.com'),
+        defaultFrom: env('SMTP_DEFAULT_FROM', 'onboarding@resend.dev'),
+        defaultReplyTo: env('SMTP_DEFAULT_REPLY_TO', 'onboarding@resend.dev'),
       },
     },
   },
