@@ -29,19 +29,21 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
   },
   email: {
     config: {
-      provider: env('EMAIL_PROVIDER', 'nodemailer'),
+      provider: env('NOTIFICATION_PROVIDER', 'smtp') === 'console'
+        ? path.resolve(__dirname, '../src/providers/email-console')
+        : env('EMAIL_PROVIDER', 'nodemailer'),
       providerOptions: {
-        host: env('SMTP_HOST', 'smtp.resend.com'),
-        port: env.int('SMTP_PORT', 465),
-        secure: env.bool('SMTP_SECURE', true),
+        host: env('SMTP_HOST'),
+        port: env.int('SMTP_PORT'),
+        secure: env.bool('SMTP_SECURE'),
         auth: {
-          user: env('SMTP_USERNAME', 'resend'),
+          user: env('SMTP_USERNAME'),
           pass: env('SMTP_PASSWORD'),
         },
       },
       settings: {
-        defaultFrom: env('SMTP_DEFAULT_FROM', 'onboarding@resend.dev'),
-        defaultReplyTo: env('SMTP_DEFAULT_REPLY_TO', 'onboarding@resend.dev'),
+        defaultFrom: env('SMTP_DEFAULT_FROM'),
+        defaultReplyTo: env('SMTP_DEFAULT_REPLY_TO'),
       },
     },
   },
