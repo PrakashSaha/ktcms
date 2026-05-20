@@ -18,7 +18,7 @@ interface SendOptions {
   html?: string;
 }
 
-export default {
+const provider = {
   init(providerOptions: ProviderOptions, settings: any) {
     const { clientId, clientSecret, refreshToken, senderEmail } = providerOptions;
 
@@ -68,3 +68,5 @@ export default {
     };
   },
 };
+
+export = provider;
