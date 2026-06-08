@@ -1,9 +1,9 @@
 export default {
   /**
    * Cron job to prevent server and database idling.
-   * Runs every 10 minutes.
+   * Runs every 5 minutes.
    */
-  '*/10 * * * *': async ({ strapi }: { strapi: any }) => {
+  '*/5 * * * *': async ({ strapi }: { strapi: any }) => {
     try {
       // 1. Keep Database Alive
       const fileCount = await strapi.db.query('plugin::upload.file').count();

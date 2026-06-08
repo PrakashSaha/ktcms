@@ -74,7 +74,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
             
             <div class="header-top">
               <div>
-                <h1 class="logo">krafttreasure.in</h1>
+                <h1 class="logo">krafttreasure.com</h1>
               </div>
               <div class="invoice-title">
                 Tax Invoice/Bill of Supply/Cash Memo<br>

@@ -145,3 +145,13 @@ walkthrough.md
 production_cleanup.md
 spreadsheet.xlsx
 *.xlsx
+
+# Pre-push Security Additions
+.env.local
+.env.development
+.env.production
+**/backend/.env
+*.key
+*.p12
+*.pfx
+secrets/
