@@ -29,9 +29,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
   },
   email: {
     config: {
-      provider: env('NOTIFICATION_PROVIDER', 'smtp') === 'console'
-        ? path.resolve(__dirname, '../src/providers/email-console')
-        : env('EMAIL_PROVIDER', 'nodemailer'),
+      provider: env('EMAIL_PROVIDER', 'nodemailer'),
       providerOptions: {
         host: env('SMTP_HOST'),
         port: env.int('SMTP_PORT'),

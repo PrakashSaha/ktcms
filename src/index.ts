@@ -65,6 +65,7 @@ export default {
         const publicActions = [
           'api::product.product.find',
           'api::product.product.findOne',
+          'api::product.product.update',
           'api::category.category.find',
           'api::category.category.findOne',
           'api::hero-slider.hero-slider.find',

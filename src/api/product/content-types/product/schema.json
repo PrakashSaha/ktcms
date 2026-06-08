@@ -130,6 +130,15 @@
       "type": "integer",
       "default": 0,
       "min": 0
+    },
+    "cosmic_story": {
+      "type": "text"
+    },
+    "ancient_utility": {
+      "type": "text"
+    },
+    "modern_utility": {
+      "type": "text"
     }
   }
 }
