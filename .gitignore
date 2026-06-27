@@ -155,3 +155,13 @@ spreadsheet.xlsx
 *.p12
 *.pfx
 secrets/
+
+# Temporary Migration Scripts
+fix-db.js
+seed_products.js
+seed_products_api.js
+sync_s3_to_db.js
+test_pg.js
+test_s3.js
+test_strapi_upload.js
+.env.bak
