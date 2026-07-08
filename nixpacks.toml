@@ -1,2 +1,5 @@
 [phases.setup]
 aptPkgs = ['...', 'python3', 'build-essential']
+
+[phases.install]
+cmds = ['npm ci --omit=optional']
