@@ -1,3 +1,5 @@
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreRouter('api::adornment.adornment');
+export default factories.createCoreRouter('api::adornment.adornment', {
+  config: { find: { auth: false }, findOne: { auth: false } },
+});
