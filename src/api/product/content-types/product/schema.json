@@ -124,7 +124,13 @@
     },
     "size": {
       "type": "string",
-      "required": true
+      "required": false
+    },
+    "height": {
+      "type": "string"
+    },
+    "width": {
+      "type": "string"
     },
     "quantity": {
       "type": "integer",

@@ -950,6 +950,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    height: Schema.Attribute.String;
     hero_sliders: Schema.Attribute.Relation<
       'manyToMany',
       'api::hero-slider.hero-slider'
@@ -1020,11 +1021,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         number
       > &
       Schema.Attribute.DefaultTo<0>;
-    size: Schema.Attribute.String & Schema.Attribute.Required;
+    size: Schema.Attribute.String;
     thumbnail: Schema.Attribute.Media<'images'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    width: Schema.Attribute.String;
     wishlist_items: Schema.Attribute.Relation<
       'oneToMany',
       'api::wishlist.wishlist'
