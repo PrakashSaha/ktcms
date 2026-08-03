@@ -5,4 +5,4 @@
 import { factories } from '@strapi/strapi';
 
 // @ts-ignore
-export default factories.createCoreController('api::store-settings.store-setting');
+export default factories.createCoreController('api::store-setting.store-setting');

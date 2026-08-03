@@ -5,6 +5,6 @@
 import { factories } from '@strapi/strapi';
 
 // @ts-ignore
-export default factories.createCoreRouter('api::store-settings.store-setting', {
+export default factories.createCoreRouter('api::store-setting.store-setting', {
   config: { find: { auth: false }, findOne: { auth: false } },
 });
