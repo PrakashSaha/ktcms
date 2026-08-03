@@ -2,7 +2,7 @@
   "kind": "singleType",
   "collectionName": "store_settings",
   "info": {
-    "singularName": "store-settings",
+    "singularName": "store-setting",
     "pluralName": "store-settings",
     "displayName": "Store Settings",
     "description": "Global store configuration including shipment pickup and return addresses"

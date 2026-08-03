@@ -1034,6 +1034,43 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiStoreSettingsStoreSettings extends Struct.SingleTypeSchema {
+  collectionName: 'store_settings';
+  info: {
+    description: 'Global store configuration including shipment pickup and return addresses';
+    displayName: 'Store Settings';
+    pluralName: 'store-settings-list';
+    singularName: 'store-settings';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::store-settings.store-settings'
+    > &
+      Schema.Attribute.Private;
+    pickup_address: Schema.Attribute.Text & Schema.Attribute.Required;
+    pickup_city: Schema.Attribute.String & Schema.Attribute.Required;
+    pickup_name: Schema.Attribute.String & Schema.Attribute.Required;
+    pickup_phone: Schema.Attribute.String;
+    pickup_pincode: Schema.Attribute.String & Schema.Attribute.Required;
+    pickup_state: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    return_address: Schema.Attribute.Text;
+    store_email: Schema.Attribute.String;
+    store_phone: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStoryStepStoryStep extends Struct.CollectionTypeSchema {
   collectionName: 'story_steps';
   info: {
@@ -1675,6 +1712,7 @@ declare module '@strapi/strapi' {
       'api::otp-store.otp-store': ApiOtpStoreOtpStore;
       'api::payment.payment': ApiPaymentPayment;
       'api::product.product': ApiProductProduct;
+      'api::store-settings.store-settings': ApiStoreSettingsStoreSettings;
       'api::story-step.story-step': ApiStoryStepStoryStep;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::wishlist.wishlist': ApiWishlistWishlist;
