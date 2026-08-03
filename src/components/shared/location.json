@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_locations",
+  "info": {
+    "displayName": "Location",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    },
+    "pincode": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}

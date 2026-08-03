@@ -12,28 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "pickup_name": {
-      "type": "string",
-      "required": true
-    },
-    "pickup_address": {
-      "type": "text",
-      "required": true
-    },
-    "pickup_city": {
-      "type": "string",
-      "required": true
-    },
-    "pickup_state": {
-      "type": "string",
-      "required": true
-    },
-    "pickup_pincode": {
-      "type": "string",
-      "required": true
-    },
-    "pickup_phone": {
-      "type": "string"
+    "locations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.location"
     },
     "return_address": {
       "type": "text"
