@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "store_settings",
+  "info": {
+    "singularName": "store-settings",
+    "pluralName": "store-settings",
+    "displayName": "Store Settings",
+    "description": "Global store configuration including shipment pickup and return addresses"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pickup_name": {
+      "type": "string",
+      "required": true
+    },
+    "pickup_address": {
+      "type": "text",
+      "required": true
+    },
+    "pickup_city": {
+      "type": "string",
+      "required": true
+    },
+    "pickup_state": {
+      "type": "string",
+      "required": true
+    },
+    "pickup_pincode": {
+      "type": "string",
+      "required": true
+    },
+    "pickup_phone": {
+      "type": "string"
+    },
+    "return_address": {
+      "type": "text"
+    },
+    "store_email": {
+      "type": "string"
+    },
+    "store_phone": {
+      "type": "string"
+    }
+  }
+}
